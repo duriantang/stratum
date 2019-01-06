@@ -12,7 +12,7 @@ DEBUG = True
 LOGDIR = 'log/'
 
 # Main application log file.
-LOGFILE = None #'stratum.log'
+LOGFILE = None  # 'stratum.log'
 
 # Possible values: DEBUG, INFO, WARNING, ERROR, CRITICAL
 LOGLEVEL = 'DEBUG'
@@ -82,7 +82,7 @@ TCP_PROXY_PROTOCOL = False
 # Keepalive for HTTP transport sessions (at this time for both poll and push)
 # High value leads to higher memory usage (all sessions are stored in memory ATM).
 # Low value leads to more frequent session reinitializing (like downloading address history).
-HTTP_SESSION_TIMEOUT = 3600 # in seconds
+HTTP_SESSION_TIMEOUT = 3600  # in seconds
 
 # Maximum number of messages (notifications, responses) waiting to delivery to HTTP Poll clients.
 # Buffer length is PER CONNECTION. High value will consume a lot of RAM,
@@ -100,14 +100,14 @@ BROWSER_ENABLE = True
 # Hostname and credentials for one trusted Bitcoin node ("Satoshi's client").
 # Stratum uses both P2P port (which is 8333 everytime) and RPC port
 BITCOIN_TRUSTED_HOST = '127.0.0.1'
-BITCOIN_TRUSTED_PORT = 8332 # RPC port
+BITCOIN_TRUSTED_PORT = 8332  # RPC port
 BITCOIN_TRUSTED_USER = 'stratum'
 BITCOIN_TRUSTED_PASSWORD = '***somepassword***'
 
 # ******************** OTHER CORE SETTINGS *********************
 # Use "echo -n '<yourpassword>' | sha256sum | cut -f1 -d' ' "
 # for calculating SHA256 of your preferred password
-ADMIN_PASSWORD_SHA256 = None # Admin functionality is disabled
+ADMIN_PASSWORD_SHA256 = None  # Admin functionality is disabled
 #ADMIN_PASSWORD_SHA256 = '9e6c0c1db1e0dfb3fa5159deb4ecd9715b3c8cd6b06bd4a3ad77e9a8c5694219' # SHA256 of the password
 
 # IP from which admin calls are allowed.
@@ -115,7 +115,7 @@ ADMIN_PASSWORD_SHA256 = None # Admin functionality is disabled
 ADMIN_RESTRICT_INTERFACE = '127.0.0.1'
 
 # Use "./signature.py > signing_key.pem" to generate unique signing key for your server
-SIGNING_KEY = None # Message signing is disabled
+SIGNING_KEY = None  # Message signing is disabled
 #SIGNING_KEY = 'signing_key.pem'
 
 # Origin of signed messages. Provide some unique string,
@@ -126,7 +126,7 @@ SIGNING_ID = None
 
 # *********************** IRC / PEER CONFIGURATION *************
 
-IRC_NICK = None # Skip IRC registration
+IRC_NICK = None  # Skip IRC registration
 #IRC_NICK = "stratum" # Use nickname of your choice
 
 # Which hostname / external IP expose in IRC room
@@ -142,14 +142,12 @@ IRC_PORT = 6667
 PEERS = [
     {
         'hostname': 'stratum.bitcoin.cz',
-        'trusted': True, # This node is trustworthy
-        'weight': -1, # Higher number means higher priority for selection.
-                      # -1 will work mostly as a backup when other servers won't work.
-                      # (IRC peers have weight=0 automatically).
+        'trusted': True,  # This node is trustworthy
+        'weight': -1,  # Higher number means higher priority for selection.
+        # -1 will work mostly as a backup when other servers won't work.
+        # (IRC peers have weight=0 automatically).
     },
 ]
-
-
 '''
 DATABASE_DRIVER = 'MySQLdb'
 DATABASE_HOST = 'palatinus.cz'

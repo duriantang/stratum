@@ -56,6 +56,7 @@ try:
 except ImportError:
     import simplejson as json
 
+
 class Encoder(json.JSONEncoder):
     def __init__(self, *args, **kwargs):
         kwargs.pop("sort_keys", None)
@@ -77,11 +78,14 @@ class Encoder(json.JSONEncoder):
     def _iterencode_default(self, o, markers=None):
         yield self.default(o)
 
+
 def dump(obj, fp, indent=None):
     return json.dump(obj, fp, separators=(',', ':'), indent=indent, cls=Encoder)
 
+
 def dumps(obj, indent=None):
     return json.dumps(obj, separators=(',', ':'), indent=indent, cls=Encoder)
+
 
 class Decoder(json.JSONDecoder):
     def raw_decode(self, s, **kw):
@@ -90,11 +94,14 @@ class Decoder(json.JSONDecoder):
             obj = unicodedata.normalize('NFD', unicode(obj))
         return obj, end
 
+
 def load(fp):
     return json.load(fp, cls=Decoder, parse_float=decimal.Decimal)
 
+
 def loads(s):
     return json.loads(s, cls=Decoder, parse_float=decimal.Decimal)
+
 
 def tool():
     infile = sys.stdin
@@ -107,10 +114,11 @@ def tool():
         raise SystemExit("{0} [infile [outfile]]".format(sys.argv[0]))
     try:
         obj = load(infile)
-    except ValueError, e:
+    except ValueError as e:
         raise SystemExit(e)
     dump(obj, outfile)
     outfile.write('\n')
+
 
 if __name__ == '__main__':
     tool()
